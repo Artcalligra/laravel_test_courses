@@ -25,14 +25,13 @@ class ApiController extends Controller
             $err = curl_error($curl);
             curl_close($curl);
 
-            /* if ($err) {
+            if ($err) {
                 echo "cURL Error #:" . $err;
             } else {
-                print_r(json_decode($response));
-            } */
+                $Json = json_encode(simplexml_load_string($response, "SimpleXMLElement", LIBXML_NOCDATA));
+                echo $Json;
+            }
 
-            $Json = json_encode(simplexml_load_string($response, "SimpleXMLElement", LIBXML_NOCDATA));
-            echo $Json;
         }
 
         // return view('api.show', ['response' => $response, 'error'=>$err]);

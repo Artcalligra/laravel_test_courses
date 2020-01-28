@@ -29899,21 +29899,21 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-window.onload = function () {
-  loadСourses();
-};
-/* document.getElementById('load').onclick = () => {
+window.onload = function () {} // loadCourses();
 
-}; */
+/* 
+$('#load_courses').click(function() {
+    console.log('load');
+    loadCourses();
+}); */
+;
 
-
-jquery__WEBPACK_IMPORTED_MODULE_0___default()('#load_cources').click(function () {
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('#loadCourses').click(function () {
   console.log('load');
-  loadСourses();
+  loadCourses();
 });
 
-function loadСourses() {
-  // console.log('load');
+function loadCourses() {
   var status = 'show';
   var table;
   jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
@@ -29921,9 +29921,13 @@ function loadСourses() {
     url: "api/show",
     data: 'status=' + status,
     success: function success(msg) {
-      var curse = JSON.parse(msg); // console.log(curse['Currency']);
-
+      var curse = JSON.parse(msg);
+      console.log(curse['Currency']);
       table = '<table class="table"><thead><tr><th>NumCode</th><th>CharCode</th><th>Scale</th><th>Name</th><th>Rate</th><tr><thead></thead><tbody>';
+      /*  for (var item in curse['Currency']) {
+           console.log(item);
+       } */
+
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(curse['Currency']).each(function (index, item) {
         table += '<tr><td>' + item.NumCode + '</td><td>' + item.CharCode + '</td><td>' + item.Scale + '</td><td>' + item.Name + '</td><td>' + item.Rate + '</td></tr>';
       });
@@ -29989,8 +29993,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\www\laravel_test\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\www\laravel_test\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\OSPanel\domains\laravel_test\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\OSPanel\domains\laravel_test\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
