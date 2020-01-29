@@ -29917,7 +29917,7 @@ function loadCourses() {
     success: function success(msg) {
       //  console.log(msg);
       if (status == msg) {
-        location.reload();
+        showCourses();
       }
     }
   });
@@ -29936,10 +29936,10 @@ function showCourses() {
 
       table = '<table class="table"><thead><tr><th>NumCode</th><th>CharCode</th><th>Scale</th><th>Name</th><th>Rate</th><tr><thead></thead><tbody>';
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(curse).each(function (index, item) {
-        table += '<tr><td>' + item.NumCode + '</td><td>' + item.CharCode + '</td><td>' + item.Scale + '</td><td>' + item.Name + '</td><td>' + item.Rate + '</td></tr>';
+        table += '<tr><td>' + item.NumCode + '</td><td>' + item.CharCode + '</td><td>' + item.Scale + '</td><td>' + item.Name + '</td><td>' + item.Rate.toFixed(2) + '</td></tr>';
       });
       table += '</tbody></table>';
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.table-block').append(table);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.table-block').html(table);
     }
   });
 }

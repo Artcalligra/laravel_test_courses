@@ -19,7 +19,7 @@ function loadCourses() {
         success: function (msg) {
             //  console.log(msg);
             if (status == msg) {
-                location.reload();
+                showCourses();
             }
         }
 
@@ -40,11 +40,11 @@ function showCourses() {
             // console.log(curse);
             table = '<table class="table"><thead><tr><th>NumCode</th><th>CharCode</th><th>Scale</th><th>Name</th><th>Rate</th><tr><thead></thead><tbody>';
             $(curse).each(function (index, item) {
-                table += '<tr><td>' + item.NumCode + '</td><td>' + item.CharCode + '</td><td>' + item.Scale + '</td><td>' + item.Name + '</td><td>' + item.Rate + '</td></tr>';
+                table += '<tr><td>' + item.NumCode + '</td><td>' + item.CharCode + '</td><td>' + item.Scale + '</td><td>' + item.Name + '</td><td>' + item.Rate.toFixed(2) + '</td></tr>';
             });
 
             table += '</tbody></table>';
-            $('.table-block').append(table);
+            $('.table-block').html(table);
         }
     });
 }
