@@ -2,48 +2,49 @@ require('./bootstrap');
 import $ from 'jquery';
 
 window.onload = function () {
-    // loadCourses();
+    showCourses();
 }
-
-/* 
-$('#load_courses').click(function() {
-    console.log('load');
-    loadCourses();
-}); */
-
 
 $('#loadCourses').click(function () {
     loadCourses();
 });
 
 function loadCourses() {
-    let status = 'show';
-    var table;
+    console.log('load');
+    let status = true;
     $.ajax({
         type: "GET",
-        url: "api/show",
-        data: 'status=' + status,
+        url: "api/load",
+        data: 'status',
         success: function (msg) {
-            console.log(msg);
-            /* let curse = JSON.parse(msg);
-            console.log(curse['Currency']);
-
-            table = '<table class="table"><thead><tr><th>NumCode</th><th>CharCode</th><th>Scale</th><th>Name</th><th>Rate</th><tr><thead></thead><tbody>';
-            /*  for (var item in curse['Currency']) {
-                 console.log(item);
-             } */
-            /*$(curse['Currency']).each(function (index, item) {
-                table += '<tr><td>' + item.NumCode + '</td><td>' + item.CharCode + '</td><td>' + item.Scale + '</td><td>' + item.Name + '</td><td>' + item.Rate + '</td></tr>';
-            });
-
-            table += '</tbody></table>'
-            $('.table-block').append(table); */
+            //  console.log(msg);
+            if (status == msg) {
+                location.reload();
+            }
         }
 
     });
 
 }
 
-function showСourses() {
+function showCourses() {
     console.log('show');
+    var table;
+    $.ajax({
+        type: "GET",
+        url: "api/show",
+        data: 'status',
+        success: function (msg) {
+            // console.log(msg);
+            let curse = JSON.parse(msg);
+            // console.log(curse);
+            table = '<table class="table"><thead><tr><th>NumCode</th><th>CharCode</th><th>Scale</th><th>Name</th><th>Rate</th><tr><thead></thead><tbody>';
+            $(curse).each(function (index, item) {
+                table += '<tr><td>' + item.NumCode + '</td><td>' + item.CharCode + '</td><td>' + item.Scale + '</td><td>' + item.Name + '</td><td>' + item.Rate + '</td></tr>';
+            });
+
+            table += '</tbody></table>';
+            $('.table-block').append(table);
+        }
+    });
 }

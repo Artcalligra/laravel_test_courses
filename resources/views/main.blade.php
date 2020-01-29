@@ -19,7 +19,7 @@
             <!-- @yield('content') -->
 
         
-        <button id="loadCourses">Загрузить данные</button>
+        <button id="loadCourses" class="btn btn-primary mt-5 m-4">Загрузить данные</button>
         <div class = "table-block">     
         </div>
 

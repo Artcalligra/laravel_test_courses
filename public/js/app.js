@@ -29899,46 +29899,49 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-window.onload = function () {} // loadCourses();
-
-/* 
-$('#load_courses').click(function() {
-    console.log('load');
-    loadCourses();
-}); */
-;
+window.onload = function () {
+  showCourses();
+};
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()('#loadCourses').click(function () {
   loadCourses();
 });
 
 function loadCourses() {
-  var status = 'show';
-  var table;
+  console.log('load');
+  var status = true;
   jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
     type: "GET",
-    url: "api/show",
-    data: 'status=' + status,
+    url: "api/load",
+    data: 'status',
     success: function success(msg) {
-      console.log(msg);
-      /* let curse = JSON.parse(msg);
-      console.log(curse['Currency']);
-        table = '<table class="table"><thead><tr><th>NumCode</th><th>CharCode</th><th>Scale</th><th>Name</th><th>Rate</th><tr><thead></thead><tbody>';
-      /*  for (var item in curse['Currency']) {
-           console.log(item);
-       } */
-
-      /*$(curse['Currency']).each(function (index, item) {
-          table += '<tr><td>' + item.NumCode + '</td><td>' + item.CharCode + '</td><td>' + item.Scale + '</td><td>' + item.Name + '</td><td>' + item.Rate + '</td></tr>';
-      });
-        table += '</tbody></table>'
-      $('.table-block').append(table); */
+      //  console.log(msg);
+      if (status == msg) {
+        location.reload();
+      }
     }
   });
 }
 
-function showСourses() {
+function showCourses() {
   console.log('show');
+  var table;
+  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+    type: "GET",
+    url: "api/show",
+    data: 'status',
+    success: function success(msg) {
+      // console.log(msg);
+      var curse = JSON.parse(msg); // console.log(curse);
+
+      table = '<table class="table"><thead><tr><th>NumCode</th><th>CharCode</th><th>Scale</th><th>Name</th><th>Rate</th><tr><thead></thead><tbody>';
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(curse).each(function (index, item) {
+        table += '<tr><td>' + item.NumCode + '</td><td>' + item.CharCode + '</td><td>' + item.Scale + '</td><td>' + item.Name + '</td><td>' + item.Rate + '</td></tr>';
+      });
+      table += '</tbody></table>';
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.table-block').append(table);
+    }
+  });
 }
 
 /***/ }),
@@ -29993,8 +29996,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\www\laravel_test\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\www\laravel_test\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\OSPanel\domains\laravel_test\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\OSPanel\domains\laravel_test\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
